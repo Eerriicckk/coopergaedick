@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+    <form method="post" action="{% url 'principal' %}">
+    {% csrf_token %}
+    <div class="logo">
+        <img src="{% static "images/cooper.png" %}" alt="coopergaedicke logo" class="cooperLogo">
+    </div>
+    <br><br>
+    <div class="centeritems" >
+        <div class="loginbox">
+            <p></p>
+            Usuário
+            <input type="text" name="user" placeholder="Usuário" class="userbox">
+            <br><br>
+            Senha
+            <input type="password" name="password" placeholder="Senha" class="passwordbox">
+            <p></p>
+        </div>
+        <div>
+            <p></p>
+            <a href="{% url 'principal' %}"><button type="submit" class="checkbutton">Entrar</button></a>
+        </div>
+    </div>
+    <p class="bluetext">Desenvolvido por:</p>
+    <img src="{% static "images/CETEC-Logo-Horizontal.png" %}" alt="logo cetec" class="ceteclogo">
+{% endblock content %}

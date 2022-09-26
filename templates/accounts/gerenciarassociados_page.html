@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/gerenciarassociados_page_style.css' %}" />
+    <link rel="icon" href="images/favicon.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Gaedicke</title>
+</head>
+{% block content %}
+    <div class="downcenter">    
+        <div class="buttons">
+            <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
+            <a href=""><button type="submit" class="changepagebuttons">Salvar</button></a>
+        </div>
+    </div>
+{% endblock content %}
+</html>

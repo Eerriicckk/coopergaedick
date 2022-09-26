@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head><!-- -->
+    <link rel="stylesheet" href="{% static 'css/cadastrar_page_style.css' %}" />
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Gaedicke</title>
+</head>
+{% block content %}
+    <div class="header">
+      <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+    </div>
+    <div class="centeritems">
+      <div class="formulario">
+        <form action="">
+        <h2><strong>Cadastro do Associado</strong></h2>
+        <hr>
+        <br>
+        <div class="inputBox">
+          <label for="nome" class="labelinput">Nome Completo:</label>
+          <input type="text" name="nome" id="nome" class="inputUser" placeholder=" Ex: Mara da silva" required />
+        </div><!--nome-->
+        <br>
+        <div class="inputBox">
+          <label for="nomedamae" class="labelinput">Quotas:</label>
+          <input type="text" name="quotas" id="quotas" class="inputUser" required />
+        </div><!--quotas-->
+        <br>
+        <div class="inputBox">
+          <label for="nomeresponsavel" class="labelinput">Nome dos responsaveis:</label>
+          <input type="text" name="nomeresponsavel" class="inputUser" placeholder=" Ex: Guilherme Tisato" required />
+        </div><!--nome responsaveis-->
+        <br>
+        <div class="inputBox">
+          <label for="datadenascimento" class="labelinput">Data de Nascimento:</label>
+          <input type="date" name="datadenascimento" id="datadenascimento" class="inputdatadenascimento"  required />
+        </div><!--data nascimento-->
+        <br>
+        <div class="inputBox">
+          <label for="cidadenatal" class="labelinput">Cidade Natal:</label>
+          <input type="text" name="cidadenatal" id="cidadenatal" class="inputUser" placeholder=" Ex: CAXIAS DO SUL" required />
+        </div><!--Cidade Natal-->
+        <br>
+        <div class="inputBox">
+          <label for="estadonatal" class="labelinput">Estado Natal:</label>
+          <input type="text" \ pattern="\d{2}" \ name="estadonatal" id="estadonatal" class="inputUser" placeholder=" Ex: RS" required />
+        </div><!--Cidade Natal-->
+        <br>
+        <div class="inputBox">
+          <label for="telefone" class="labelinput">Telefone:</label>
+          <input type="tel" name="telefone" id="telefone" class="inputUser"  placeholder="Ex: () 0000-0000" required />
+        </div><!--telefone-->
+        <br>
+        <div class="inputBox">
+          <label for="email" class="labelinput">E-mail:</label>
+          <input type="email" name="email" id="email" class="inputUser"  placeholder=" usuario@gmail.com" required />
+        </div><!--email-->
+        <br>
+        <div class="inputBox">
+          <label for="rg" class="labelinput">Nº do RG:</label>
+          <input type="text" name="rg" \ pattern="\d{2}\.\d{3}\.\d{3}-\d{1}" \ title="Digite um RG no formato: xx.xxx.xxx-x" class="inputUser"  placeholder=" Ex: 2343455689" required />
+        </div><!--rg-->
+        <br>
+        <div class="inputBox">
+          <label for="cpf" class="labelinput">Nº do CPF:</label>
+          <input type="text" name="cpf" \ pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" \ title="Digite um CPF no formato: xxx.xxx.xxx-xx" class="inputUser" placeholder=" Ex: 234.345.567-89" required />
+        </div><!--cpf-->
+        <br>
+        <div class="inputBox">
+          <label for="associado" class="labelinput">Está Associado:</label>
+          <input type="checkbox" name="associado" id="associado" class="inputUser" required />
+        </div><!--associado-->
+        <br>
+        <div class="inputBox">
+          <label for="cargo" class="labelinput">Cargo:</label>
+          <input type="text" name="cargo" class="inputUser" placeholder=" Ex: Conselho fiscal" required />
+          <br>
+        </div><!--Cargo-->
+        <br>
+        <hr>
+        <h3>Endereço</h3>
+        <div class="inputBox">
+          <label for="rua" class="labelinput">Rua:</label>
+          <input type="rua" name="rua" id="rua" class="inputUser" placeholder=" Ex: Av. Aracarias" required />
+        </div><!--rua-->
+        <br>
+        <div class="inputBox">
+          <label for="bairro" class="labelinput">Bairro:</label>
+          <input type="bairro" name="bairro" id="bairro" class="inputUser" placeholder=" Ex: Vale Verde" required />
+        </div><!--bairro-->
+        <br>
+        <div class="inputBox">
+          <label for="cidade" class="labelinput">Cidade:</label>
+          <input type="cidade" name="cidade" id="cidade" class="inputUser" placeholder=" Ex: Caxias do Sul" required />
+        </div><!--cidade-->
+        <br>
+        <div class="inputBox">
+          <label for="cep" class="labelinput">Cep:</label>
+          <input type="number" name="cep" \ pattern="\d{8}" \ title="Digite um CEP no formato: xxxxxxx" placeholder=" Ex: 98765-110" class="inputUser" required />
+        </div><!--cep-->
+        <br>
+        <hr>
+        </form>
+        <div class="downcenter">    
+            <div class="buttons">
+                <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
+                <a href=""><button type="submit" class="changepagebuttons">Salvar</button></a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <p class="bluetext">Desenvolvido por:</p>
+    <img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo">
+{% endblock content %}
+</html>
