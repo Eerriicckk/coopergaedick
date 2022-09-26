@@ -34,10 +34,13 @@ urlpatterns = [
     path('templates/', TemplateView.as_view(template_name ='loginpage.html')),
     path('admin/', admin.site.urls),
     path('principal/', views.principal, name='principal'),
-    path('cadastrar/', views.cadastrar, name='cadsatrar'),
+    path('cadastrar/', views.cadastrar, name='cadastrar'),
     path('gerenciar/', views.gerenciar, name='gerenciar'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('/redirect/', redirect_view),
+    path('redirect/', views.redirect_view, name='teste'),
     path('', views.login)
 ]
 urlpatterns += staticfiles_urlpatterns()
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
