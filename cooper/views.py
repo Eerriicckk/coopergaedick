@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User, auth
 from cooper.models import chk_table
 from .forms import NameForm
 
@@ -20,12 +21,14 @@ def login(request):
     return render(request, 'registration/login.html')
 
 def redirect_view(request):
-    chk_table("user", "senha")
-    return render(request, 'registration/login.html')
+    user = request.POST['usuario']
+    senha = request.POST['senha']
+    chk_table(user, senha)
+    
     '''response = redirect('/redirect-success/')
     return response'''
 
-def get_name(request):
+def login_user(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -42,3 +45,4 @@ def get_name(request):
         form = NameForm()
 
     return render(request, 'name.html', {'form': form})
+

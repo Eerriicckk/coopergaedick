@@ -23,7 +23,6 @@ from django.views.generic import TemplateView
 from django.conf.urls import url, include
 from django.http import HttpResponse
 from . import views
-from .views import redirect_view
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static

@@ -1,5 +1,6 @@
 from unicodedata import name
 from django.db import models
+
 class Associados(models.Model):
     cpf = models.CharField(max_length=13, primary_key = True)
     nomeAssociado = models.CharField(max_length=100)
@@ -23,12 +24,13 @@ class Users(models.Model):
     name = models.CharField(max_length=50)
     password = models.CharField(max_length=20)
 
+class Projetos(models.Model):
+    nome_projeto = models.CharField(max_length=50)
+    data_projeto = models.DateField()
+
 def chk_table(reques1, reques2):
     name = reques1
     password = reques2
     if Users.objects.filter(name=name, password=password).exists():
         votes_table = Users.objects.filter(name=name, password=password).exists()
-        print(votes_table)
-    else:
-        pass
     

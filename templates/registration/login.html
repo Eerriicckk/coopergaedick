@@ -23,16 +23,16 @@
       {% endif %}
     {% endif %}
   
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'teste' %}">
       {% csrf_token %}
       <table>
         <tr>
           <td>{{ form.username.label_tag }}</td>
-          <td>{{ form.username }}</td>
+          <td><input type="text" name="usuario" placeholder="Usuário"/></td>
         </tr>
         <tr>
           <td>{{ form.password.label_tag }}</td>
-          <td>{{ form.password }}</td>
+          <td><input type="text" name="senha" placeholder="Senha"/></td>
         </tr>
       </table>
       <input type="text" name="{{ form.field.html_name }}" placeholder="foo" value="{{ form.field.value }}" />
