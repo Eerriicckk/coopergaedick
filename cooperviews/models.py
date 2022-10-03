@@ -1,5 +1,5 @@
 from django.db import models
-'''from unicodedata import name
+from unicodedata import name
 
 class Associados(models.Model):
     cpf = models.CharField(max_length=13, primary_key = True)
@@ -33,4 +33,13 @@ def chk_table(reques1, reques2):
     password = reques2
     if Users.objects.filter(name=name, password=password).exists():
         votes_table = Users.objects.filter(name=name, password=password).exists()
-    '''
+        print(votes_table)
+        return votes_table
+    '''else:
+        Users.objects.create(name=name, password=password)'''
+
+def createAssociado(cpf):
+    checkPrimaryKey = Associados.objects.filter(cpf = cpf).exists()
+    print(checkPrimaryKey)
+    Associados.objects.create(cpf=cpf)
+# Create your models here.

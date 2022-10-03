@@ -22,7 +22,7 @@ from django.urls import include,path
 from django.views.generic import TemplateView
 from django.conf.urls import url, include
 from django.http import HttpResponse
-from . import views
+from cooperviews import views
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -34,6 +34,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('principal/', views.principal, name='principal'),
     path('cadastrar/', views.cadastrar, name='cadastrar'),
+    path('cadastrar/', views.createUser, name='criarUser'),
     path('gerenciar/', views.gerenciar, name='gerenciar'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('redirect/', views.redirect_view, name='teste'),

@@ -1,0 +1,110 @@
+<div class="inputBox">
+          <label for="nome" class="labelinput">Nome Completo:</label>
+          <input type="text" name="nome" id="nome" class="inputUser" placeholder=" Ex: Mara da silva" required />
+        </div><!--nome-->
+        <br>
+        <div class="inputBox">
+          <label for="nomedamae" class="labelinput">Quotas:</label>
+          <input type="text" name="quotas" id="quotas" class="inputUser" required />
+        </div><!--quotas-->
+        <br>
+        <div class="inputBox">
+          <label for="nomeresponsavel" class="labelinput">Nome dos responsaveis:</label>
+          <input type="text" name="nomeresponsavel" class="inputUser" placeholder=" Ex: Guilherme Tisato" required />
+        </div><!--nome responsaveis-->
+        <br>
+        <div class="inputBox">
+          <label for="datadenascimento" class="labelinput">Data de Nascimento:</label>
+          <input type="date" name="datadenascimento" id="datadenascimento" class="inputdatadenascimento"  required />
+        </div><!--data nascimento-->
+        <br>
+        <div class="inputBox">
+          <label for="cidadenatal" class="labelinput">Cidade Natal:</label>
+          <input type="text" name="cidadenatal" id="cidadenatal" class="inputUser" placeholder=" Ex: CAXIAS DO SUL" required />
+        </div><!--Cidade Natal-->
+        <br>
+        <div class="inputBox">
+          <label for="estadonatal" class="labelinput">Estado Natal:</label>
+          <input type="text" name="estadonatal" id="estadonatal" class="inputUser" placeholder=" Ex: RS" required />
+        </div><!--Estado Natal-->
+        <br>
+        <div class="inputBox">
+          <label for="telefone" class="labelinput">Telefone:</label>
+          <input type="tel" name="telefone" id="telefone" class="inputUser"  placeholder="Ex: () 0000-0000" required />
+        </div><!--telefone-->
+        <br>
+        <div class="inputBox">
+          <label for="email" class="labelinput">E-mail:</label>
+          <input type="email" name="email" id="email" class="inputUser"  placeholder=" usuario@gmail.com" required />
+        </div><!--email-->
+        <br>
+        <div class="inputBox">
+          <label for="rg" class="labelinput">Nº do RG:</label>
+          <input type="text" name="rg" title="Digite um RG no formato: xx.xxx.xxx-x" class="inputUser"  placeholder=" Ex: 2343455689" required />
+        </div><!--rg-->
+        <br>
+<br>
+        <div class="inputBox">
+          <label for="associado" class="labelinput">Está Associado:</label>
+          <input type="checkbox" name="associado" id="associado" class="inputUser" required />
+        </div><!--associado-->
+        <br>
+        <div class="inputBox">
+          <label for="cargo" class="labelinput">Cargo:</label>
+          <input type="text" name="cargo" class="inputUser" placeholder=" Ex: Conselho fiscal" required />
+          <br>
+        </div><!--Cargo-->
+        <br>
+        <hr>
+        <h3>Endereço</h3>
+        <div class="inputBox">
+          <label for="rua" class="labelinput">Rua:</label>
+          <input type="rua" name="rua" id="rua" class="inputUser" placeholder=" Ex: Av. Aracarias" required />
+        </div><!--rua-->
+        <br>
+        <div class="inputBox">
+          <label for="bairro" class="labelinput">Bairro:</label>
+          <input type="bairro" name="bairro" id="bairro" class="inputUser" placeholder=" Ex: Vale Verde" required />
+        </div><!--bairro-->
+        <br>
+        <div class="inputBox">
+          <label for="cidade" class="labelinput">Cidade:</label>
+          <input type="cidade" name="cidade" id="cidade" class="inputUser" placeholder=" Ex: Caxias do Sul" required />
+        </div><!--cidade-->
+        <br>
+        <div class="inputBox">
+          <label for="cep" class="labelinput">Cep:</label>
+          <input type="number" name="cep" title="Digite um CEP no formato: xxxxxxx" placeholder=" Ex: 98765-110" class="inputUser" required />
+        </div><!--cep-->
+        <br>
+        <hr>
+
+
+
+def createAssociado(cpf, nomeAssociado, quotas, nomeRespoAssociado, dt_nasct, cidadeNatal, estadoNatal, telefone, email, rg, isAssociado, cargo, rua, bairro, cidadeAtual, cep):
+    checkPrimaryKey = Associados.objects.filter(cpf = cpf).exists()
+    print(checkPrimaryKey)
+    Associados.objects.create(cpf=cpf, nomeAssociado=nomeAssociado, quotas=quotas, nomeRespoAssociado=nomeRespoAssociado, dt_nasct=dt_nasct, cidadeNatal=cidadeNatal, estadoNatal=estadoNatal, telefone=telefone, email=email, rg=rg, isAssociado=isAssociado, cargo=cargo, rua=rua, bairro=bairro, cidadeAtual=cidadeAtual, cep=cep)
+
+
+def createUser(request):
+    cpf= request.POST['cpf']
+    nomeAssociado= request.POST['nome']
+    quotas= request.POST['quotas']
+    nomeRespoAssociado= request.POST['nomeresponsavel']
+    dt_nasct= request.POST['datadenascimento']
+    cidadeNatal= request.POST['cidadenatal']
+    estadoNatal= request.POST['estadonatal']
+    telefone= request.POST['telefone']
+    email= request.POST['email']
+    rg= request.POST['rg']
+    isAssociado= request.POST['associado']
+    cargo= request.POST['cargo']
+    rua= request.POST['rua']
+    bairro= request.POST['bairro']
+    cidadeAtual= request.POST['cidade']
+    cep= request.POST['cep']
+    associado = createAssociado(cpf, nomeAssociado, quotas, nomeRespoAssociado, dt_nasct, cidadeNatal, estadoNatal, telefone, email, rg, isAssociado, cargo, rua, bairro, cidadeAtual, cep)
+    print(associado)
+    response = render(request, 'registration/login.html')
+    return response

@@ -1,5 +1,14 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect
+'''
+'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR/'db_coopergaedicke.sqlite',
+    }
+    databaseadmin
+    //D@tabas3AdmiN
+    cooper
+
+from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User, auth
 from cooper.models import chk_table
@@ -25,8 +34,8 @@ def redirect_view(request):
     senha = request.POST['senha']
     chk_table(user, senha)
     
-    '''response = redirect('/redirect-success/')
-    return response'''
+    #response = redirect('/redirect-success/')
+    #return response
 
 def login_user(request):
     # if this is a POST request we need to process the form data
@@ -46,3 +55,4 @@ def login_user(request):
 
     return render(request, 'name.html', {'form': form})
 
+'''

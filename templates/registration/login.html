@@ -6,7 +6,7 @@
    
     <!--<form method="post" action="{% url 'principal' %}">-->
     <div class="logo">
-        <img src="{% static "images/cooper.png" %}" alt="coopergaedicke logo" class="cooperLogo">
+        <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
     </div>
     <br><br>
     <div class="centeritems" >
@@ -23,31 +23,30 @@
       {% endif %}
     {% endif %}
   
-    <form method="post" action="{% url 'teste' %}">
-      {% csrf_token %}
-      <table>
-        <tr>
-          <td>{{ form.username.label_tag }}</td>
-          <td><input type="text" name="usuario" placeholder="Usuário"/></td>
-        </tr>
-        <tr>
-          <td>{{ form.password.label_tag }}</td>
-          <td><input type="text" name="senha" placeholder="Senha"/></td>
-        </tr>
-      </table>
-      <input type="text" name="{{ form.field.html_name }}" placeholder="foo" value="{{ form.field.value }}" />
-      <input type="submit" value="login" />
-      <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-  
-    <p><a href="{% url 'teste' %}">Lost password?</a></p>
-        <!--<div class="loginbox">
+    <div class="loginbox">
+      <form method="post" action="{% url 'teste' %}">
+        {% csrf_token %}
+        <table>
+          <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td><input type="text" name="usuario" placeholder="Usuário" class="userbox"/></td>
+          </tr>
+          <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td><input type="text" name="senha" placeholder="Senha" class="passwordbox"/></td>
+          </tr>
+        </table>
+        <input type="submit" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+    </div>
+    <!--<p><a href="{% url 'login' %}">Lost password?</a></p>
             <p></p>
             Usuário
-            <input type="text" name="user" placeholder="Usuário" class="userbox">
+            <input type="text" name="user" placeholder="Usuário" >
             <br><br>
             Senha
-            <input type="password" name="password" placeholder="Senha" class="passwordbox">
+            <input type="password" name="password" placeholder="Senha" >
             <p></p>
         </div>-->
         <!--<div>
@@ -56,6 +55,6 @@
         </div> -->
     </div>
     <p class="bluetext">Desenvolvido por:</p>
-    <img src="{% static "images/CETEC-Logo-Horizontal.png" %}" alt="logo cetec" class="ceteclogo">
+    <img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo">
     
 {% endblock content %}

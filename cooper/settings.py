@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'templates',
+    'cooperviews',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +79,9 @@ WSGI_APPLICATION = 'cooper.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_coopergaedicke',
-        'USER': 'django',
-        'PASSWORD': 'cooper2022',
+        'NAME': 'cooperdatabase',
+        'USER': 'cooper',
+        'PASSWORD': 'D@tabas3AdmiN',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
