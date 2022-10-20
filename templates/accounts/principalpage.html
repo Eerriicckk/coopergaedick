@@ -2,18 +2,26 @@
 {%load static%}
 
 {% block content %}
+    <div class="down">
+        <table class="tablecetec">
+        <tr>
+            <th><p class="bluetext">Desenvolvido por:</p></th>
+            <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+        </table>
+    </div>
     <div class="logo">
-        <img src="{% static "images/cooper.png" %}" alt="coopergaedicke logo" class="cooperLogo">
+        <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
     </div>
     <br>
     <div class="centeritems">
         <div class="buttons">
             <a href="{% url 'cadastrar' %}"><button type="button" class="changepagebuttons">Cadastrar Associados</button></a>
             <p></p>
-            <a href="{% url 'gerenciar' %}"><button type="button" class="changepagebuttons">Gerenciar Associados</button></a>
+            <a href="{% url 'verassociados' %}"><button type="button" class="changepagebuttons">Ver Associados</button></a>
+            <p></p>
+            <a href="{% url 'logout' %}"><button type="button" class="changepagebuttons">Sair</button></a>
         </div>
     </div>
-    <p class="bluetext">Desenvolvido por:</p>
-    <img src="{% static "images/CETEC-Logo-Horizontal.png" %}" alt="logo cetec" class="ceteclogo">
 {% endblock content %}
 </html>

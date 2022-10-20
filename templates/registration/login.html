@@ -3,58 +3,47 @@
 
 
 {% block content %}
-   
-    <!--<form method="post" action="{% url 'principal' %}">-->
+    <div class="down">
+      <table class="tablecetec">
+        <tr>
+          <th><p class="bluetext">Desenvolvido por:</p></th>
+          <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+      </table>
+    </div>
     <div class="logo">
         <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+      {% if messages %}
+        {% for message in messages %}
+          {% if forloop.counter < 2 %}
+            <div class = "alerta">{{message}}</div>
+          {% endif%}
+        {% endfor %}
+      {% endif %} 
+      {% if form.errors %}
+        <h3>Conta ou senha incorretos, tente novamente.</h3>
+      {% endif %}
     </div>
     <br><br>
     <div class="centeritems" >
-    {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-  
-    {% if next %}
-      {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-      {% else %}
-        <p>Please login to see this page.</p>
-      {% endif %}
-    {% endif %}
   
     <div class="loginbox">
-      <form method="post" action="{% url 'teste' %}">
+      <form method="post" action="{% url 'login' %}" class="teste">
         {% csrf_token %}
-        <table>
-          <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td><input type="text" name="usuario" placeholder="Usuário" class="userbox"/></td>
-          </tr>
-          <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td><input type="text" name="senha" placeholder="Senha" class="passwordbox"/></td>
-          </tr>
-        </table>
-        <input type="submit" value="login" />
+          <strong>Usuário</strong>
+          <br><br>
+          {{ form.username}}
+          <strong>Senha</strong>
+          <br><br>
+          {{ form.password }}
+        <br>
+        <br>
+        <input type="submit" value="login" class="loginboxbutton"/>
         <input type="hidden" name="next" value="{{ next }}" />
+        <br>  
       </form>
     </div>
-    <!--<p><a href="{% url 'login' %}">Lost password?</a></p>
-            <p></p>
-            Usuário
-            <input type="text" name="user" placeholder="Usuário" >
-            <br><br>
-            Senha
-            <input type="password" name="password" placeholder="Senha" >
-            <p></p>
-        </div>-->
-        <!--<div>
-            <p></p>
-            <a href="{% url 'principal' %}"><button type="submit" class="checkbutton">Entrar</button></a>
-        </div> -->
     </div>
-    <p class="bluetext">Desenvolvido por:</p>
-    <img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo">
+    
     
 {% endblock content %}

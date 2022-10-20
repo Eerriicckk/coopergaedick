@@ -1,0 +1,130 @@
+{% load static %}
+{% load widget_tweaks%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/cadastrar_page_style.css' %}" />
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Gaedicke</title>
+</head>
+{% block content %}
+    <div class="down">
+      <table class="tablecetec">
+        <tr>
+          <th><p class="bluetext">Desenvolvido por:</p></th>
+          <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="header">
+      <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+    </div>
+    <div class="centeritems">
+      <div class="formulario">
+        <form  method="post" action="{% url 'updateassociado' %}">
+          {% csrf_token %}
+          <h2><strong>Gerenciamento do Associado</strong></h2>
+          <hr>
+          <br>
+          <div class="inputBox">
+            <label for="nome" class="labelinput">Nome Completo:</label>
+            <div>{{ form.nome|add_class:"inputBool" }}</div>
+          </div><!--nome-->
+          <br>
+          <div class="inputBox">
+            <label for="nomedamae" class="labelinput">Quotas:</label>
+            <div>{{ form.quotas|add_class:"inputBool" }}</div>
+          </div><!--quotas-->
+          <br>
+          <div class="inputBox">
+            <label for="nomeresponsavel" class="labelinput">Nome dos responsaveis:</label>
+            <div>{{ form.nomeresponsavel|add_class:"inputBool" }}</div>
+          </div><!--nome responsaveis-->
+          <br>
+          <div class="inputBox">
+            <label for="datadenascimento" class="labelinput">Data de Nascimento:</label>
+            <div>{{ form.datadenascimento|add_class:"inputBool" }}</div>
+          </div><!--data nascimento-->
+          <br>
+          <div class="inputBox">
+            <label for="cidadenatal" class="labelinput">Cidade Natal:</label>
+            <div>{{ form.cidadenatal|add_class:"inputBool" }}</div>
+          </div><!--Cidade Natal-->
+          <br>
+          <div class="inputBox">
+            <label for="estadonatal" class="labelinput">Estado Natal:</label>
+            <div>{{ form.estadonatal|add_class:"inputBool" }}</div>
+          </div><!--Estado Natal-->
+          <br>
+          <div class="inputBox">
+            <label for="telefone" class="labelinput">Telefone:</label>
+            <div>{{ form.telefone|add_class:"inputBool" }}</div>
+          </div><!--telefone-->
+          <br>
+          <div class="inputBox">
+            <label for="email" class="labelinput">E-mail:</label>
+            <div>{{ form.email|add_class:"inputBool" }}</div>
+          </div><!--email-->
+          <br>
+          <div class="inputBox">
+            <label for="rg" class="labelinput">Nº do RG:</label>
+            <div>{{ form.rg|add_class:"inputBool" }}</div>
+          </div><!--rg-->
+          <br>
+          <div class="inputBox">
+            <label for="cpf" class="labelinput">Nº do CPF:</label>
+            <div>{{ form.cpf|add_class:"inputBool" }}</div>
+          </div><!--cpf-->
+          <br>
+          <div class="inputBox">
+            <label for="associado" class="labelinput">Está Associado:</label>
+            <div class="inputUserBool">{{ form.associado|add_class:"inputAssociado" }}</div>
+          </div><!--associado-->
+          <br>
+          <div class="inputBox">
+            <label for="cargo" class="labelinput">Cargo:</label>
+            <div>{{ form.cargo|add_class:"inputBool" }}</div>
+          </div><!--Cargo-->
+          <br>
+          <hr>
+          <h3>Endereço</h3>
+          <div class="inputBox">
+            <label for="rua" class="labelinput">Rua:</label>
+            <div>{{ form.rua|add_class:"inputBool" }}</div>
+          </div><!--rua-->
+          <br>
+          <div class="inputBox">
+            <label for="bairro" class="labelinput">Bairro:</label>
+            <div>{{ form.bairro|add_class:"inputBool" }}</div>
+          </div><!--bairro-->
+          <br>
+          <div class="inputBox">
+            <label for="cidade" class="labelinput">Cidade:</label>
+            <div>{{ form.cidade|add_class:"inputBool" }}</div>
+          </div><!--cidade-->
+          <br>
+          <div class="inputBox">
+            <label for="cep" class="labelinput">Cep:</label>
+            <div>{{ form.cep|add_class:"inputBool" }}</div>
+          </div><!--cep-->
+          <br>
+          <hr>
+          <div class="downcenter">    
+            <div class="buttons">
+              <input type="submit" value="Salvar" class="changepagebuttons"/>
+              <input type="hidden" name="next" value="{{ next}}" />
+              <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
+            </div>
+          </div>
+          
+        </form>
+          
+      </div>
+    </div>
+    <br>
+{% endblock content %}
+</html>

@@ -1,0 +1,79 @@
+{% load render_table from django_tables2 %}
+{% load static %}
+{% load widget_tweaks%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/ver_associados_page_style.css' %}" />
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Gaedicke</title>
+</head>
+{% block content %}
+    <div class="down">
+        <table class="tablecetec">
+            <tr>
+                <th class="footer"><p class="bluetext">Desenvolvido por:</p></th>
+                <th class="footer"><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+            </tr>
+        </table>
+    </div>
+    <div class="downcenter">    
+        <div class="buttons">
+            <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
+            <a href="{% url 'gerenciar' %}"><button type="submit" class="changepagebuttons">Gerenciar</button></a>
+        </div>
+        <nobr><strong>Associados</strong></nobr>
+    </div>
+    <br>
+    <table class="associados">
+        <tr>
+            <th>Nome</th>
+            <th>Quotas</th>
+            <th>Nome Responsáveis</th>
+            <th>Data de Nascimento</th>
+            <th>Cidade Natal</th>
+            <th>Estado Natal</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Rg</th>
+            <th class="primarykey">Cpf</th>
+            <th>Está Associado</th>
+            <th>Cargo</th>
+            <th>Rua</th>
+            <th>Bairro</th>
+            <th>Cidade Atual</th>
+            <th>Cep</th>
+        </tr>
+        {% for item in objs %}
+        <tr>
+            <td>{{ item.nomeAssociado }}</td>
+            <td>{{ item.quotas }}</td>
+            <td>{{ item.nomeRespoAssociado }}</td>
+            <td>{{ item.dt_nasct| date:"d-m-Y" }}</td>
+            <td>{{ item.cidadeNatal }}</td>
+            <td>{{ item.estadoNatal }}</td>
+            <td>{{ item.telefone }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.rg }}</td>
+            <td class="primarykey">{{ item.cpf }}</td>
+            <td>{% if item.isAssociado == False%}
+                <img src="{% static 'images/wrong.png' %}" class="trueorfalse">
+                {% else %}
+                <img src="{% static 'images/right.png' %}" class="trueorfalse">
+                {% endif %}
+            </td>
+            <td>{{ item.cargo }}</td>
+            <td>{{ item.rua }}</td>
+            <td>{{ item.bairro }}</td>
+            <td>{{ item.cidadeAtual }}</td>
+            <td>{{ item.cep }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br>
+{% endblock content %}
+</html>

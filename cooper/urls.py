@@ -32,13 +32,18 @@ from django.conf import settings
 urlpatterns = [
     path('templates/', TemplateView.as_view(template_name ='loginpage.html')),
     path('admin/', admin.site.urls),
-    path('principal/', views.principal, name='principal'),
+    path('', views.principal, name='principal'),
     path('cadastrar/', views.cadastrar, name='cadastrar'),
-    path('cadastrar/', views.createUser, name='criarUser'),
+    path('cadastrado/', views.createUser, name='criaruser'),
+    path('atualizado/', views.updateAssociado, name='updateassociado'),
+    path('ver/', views.view_info, name='verassociados'),#path('ver/', views.PersonListView.as_view(), name='verassociados'),
     path('gerenciar/', views.gerenciar, name='gerenciar'),
+    path('gerenciar/associado/', views.checkCpf, name='checkcpf'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('redirect/', views.redirect_view, name='teste'),
-    path('', views.login)
+    path('', views.logutView, name = 'logout'),
+    path('', views.redirect_view, name='teste'),
+    path('', views.principal) 
+
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += [

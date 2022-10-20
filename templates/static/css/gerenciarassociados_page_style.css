@@ -59,13 +59,24 @@ h3{
 .bluetext{
     color: rgb(0, 87, 0);
     font-family: Arial;
-    display: flex;
-    position: absolute;
-    right: 220px;
+    width:120px;
 }
 .ceteclogo{
     width:200px;
-    display:flex;
+
+}
+.tablecetec{
+    margin-bottom:0%;
     position: absolute;
-    right: 10px;
+    bottom: 0px;
+    right: 0px;
+}
+.down{
+    font-family:arial;
+    font-size:12px;
+    text-align:center;
+    height:100%;
+    position:absolute;
+    margin-bottom:0%;
+    right:0%;
 }

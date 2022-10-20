@@ -1,4 +1,4 @@
-<div class="inputBox">
+        <div class="inputBox">
           <label for="nome" class="labelinput">Nome Completo:</label>
           <input type="text" name="nome" id="nome" class="inputUser" placeholder=" Ex: Mara da silva" required />
         </div><!--nome-->
@@ -43,7 +43,8 @@
           <input type="text" name="rg" title="Digite um RG no formato: xx.xxx.xxx-x" class="inputUser"  placeholder=" Ex: 2343455689" required />
         </div><!--rg-->
         <br>
-<br>
+        
+        <br>
         <div class="inputBox">
           <label for="associado" class="labelinput">Está Associado:</label>
           <input type="checkbox" name="associado" id="associado" class="inputUser" required />
