@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'templates',
     'cooperviews',
     'widget_tweaks',
-    'django_tables2'
+    'django_tables2',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [

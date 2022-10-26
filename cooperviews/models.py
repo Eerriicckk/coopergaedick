@@ -1,5 +1,5 @@
 from django.db import models
-from unicodedata import name
+import random, datetime
 
 class Associados(models.Model):
     cpf = models.PositiveBigIntegerField(primary_key = True)
@@ -25,8 +25,11 @@ class Users(models.Model):
     password = models.CharField(max_length=20)
 
 class Projetos(models.Model):
-    nome_projeto = models.CharField(max_length=50)
-    data_projeto = models.DateField()
+    codProjeto = models.PositiveIntegerField(primary_key = True)
+    dtCriacao = models.DateField()
+    nomeProjeto = models.CharField(max_length=140)
+    descricaoProjeto = models.TextField(max_length=500)
+    projConcluido = models.BooleanField()
 
 def chk_table(reques1, reques2):
     name = reques1
@@ -35,9 +38,27 @@ def chk_table(reques1, reques2):
         votes_table = Users.objects.filter(name=name, password=password).exists()
         print(votes_table)
         return votes_table
-    '''else:
-        Users.objects.create(name=name, password=password)'''
 
+def createProj(nOMEPROJETO, dESCRICAOPROJETO, pROJCONCLUIDO):
+    codProjeto = random.randint(1000000000, 2147483600)
+    data = datetime.datetime.now()
+    dtCriacao = str(data.year)+"-"+str(data.month)+"-"+str(data.day)
+    nomeProjeto = nOMEPROJETO
+    descricaoProjeto = dESCRICAOPROJETO
+    projConcluido = pROJCONCLUIDO
+    print("is concluido",projConcluido)
+    esta = True
+    while esta:
+        numero = random.randint(1000000000, 2147483600)
+        if Projetos.objects.filter(codProjeto=numero).exists():
+            esta = True
+        else:
+            esta = False
+            break
+    Projetos.objects.create(codProjeto=codProjeto,dtCriacao=dtCriacao,nomeProjeto=nomeProjeto, descricaoProjeto=descricaoProjeto, projConcluido=projConcluido)
+    print("gravou")
+    return codProjeto
+    
 def createAssociado(cPF, nOMEASSOCIADO, qUOTAS, nOMERESPOASSOCIADO, dT_nASCT, cIDADENATAL, eSTADONATAL, tELEFONE, eMAIL, rG, iSASSOCIADO, cARGO, rUA, bAIRRO, cIDADEATUAL, cEP):
     cpf =cPF
     nomeAssociado =nOMEASSOCIADO
@@ -98,9 +119,37 @@ def updateAssociado(cPF, nOMEASSOCIADO, qUOTAS, nOMERESPOASSOCIADO, dT_nASCT, cI
         Associados.objects.create(cpf=cpf, nomeAssociado=nomeAssociado, quotas=quotas, nomeRespoAssociado=nomeRespoAssociado, dt_nasct=dt_nasct, cidadeNatal=cidadeNatal, estadoNatal=estadoNatal, telefone=telefone, email=email, rg=rg, isAssociado=isAssociado, cargo=cargo, rua=rua, bairro=bairro, cidadeAtual=cidadeAtual, cep=cep)
         print("gravou")
 
+def filterAssociado(cPF, nOMEASSOCIADO, qUOTAS, nOMERESPOASSOCIADO, dT_nASCT, cIDADENATAL, eSTADONATAL, tELEFONE, eMAIL, rG, iSASSOCIADO, cARGO, rUA, bAIRRO, cIDADEATUAL, cEP, dECRESCENTE):
+    cpf =cPF
+    nomeAssociado =nOMEASSOCIADO
+    quotas =qUOTAS
+    nomeRespoAssociado =nOMERESPOASSOCIADO 
+    dt_nasct =dT_nASCT
+    cidadeNatal =cIDADENATAL
+    estadoNatal =eSTADONATAL
+    telefone =tELEFONE
+    email =eMAIL
+    rg =rG
+    isAssociado =iSASSOCIADO
+    cargo =cARGO
+    rua =rUA
+    bairro =bAIRRO
+    cidadeAtual =cIDADEATUAL
+    cep =cEP
+    decrescente = dECRESCENTE
+    if isAssociado == 'on':
+        isAssociado = True
+    elif isAssociado == 'off':
+        isAssociado = False
+    
+        checkPrimaryKey = Associados.objects.filter(cpf=cpf).exists()
+        print(checkPrimaryKey)
+        print("nao gravou")
+        return checkPrimaryKey
+
 def checkCpf(data):
-    cpf = data
-    if Associados.objects.filter(cpf=cpf).exists():
+    cPF = data
+    if Associados.objects.filter(cpf=cPF).exists():
         print("ok")
 
 def chk_tabl(reques1):

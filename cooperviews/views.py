@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.contrib import messages
 from django_tables2 import SingleTableView
-from cooperviews.models import chk_table, chk_tabl, createAssociado, Associados
+from cooperviews.models import chk_table, chk_tabl, createAssociado, createProj, Associados, Projetos
 from .tables import PersonTable
-from .forms import CheckUser, CreateAssociado, CheckCpf, UpdateAssociado
+from .forms import CreateAssociado, CheckCpf, UpdateAssociado, ProjetosInput
+from .models import Associados
 
 class PersonListView(SingleTableView):
     model = Associados
@@ -16,6 +17,14 @@ def view_info(request):
     if request.user.is_authenticated:
         objs=Associados.objects.all()
         return render(request, 'accounts/ver_associados_page.html', {'objs':objs})
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
+def viewProjects(request):
+    if request.user.is_authenticated:
+        objs=Projetos.objects.all()
+        return render(request, 'accounts/verProjetosPage.html', {'objs':objs})
     else:
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
@@ -32,6 +41,15 @@ def cadastrar(request):
         context = {}
         context['form'] = CreateAssociado()
         return render(request, 'accounts/cadastrarpage.html', context)
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
+def cadastrarProjeto(request):
+    if request.user.is_authenticated:
+        context = {}
+        context['form'] = ProjetosInput()
+        return render(request, 'accounts/criarprojetospage.html', context)
     else:
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
@@ -54,7 +72,6 @@ def login(request):
 
 def redirect_view(request):
     context = {}
-    context['form'] = CheckUser()
     login_data = request.POST.dict()
     user = login_data.get("user")
     senha = login_data.get("password")
@@ -101,6 +118,25 @@ def createUser(request):
     response = render(request, 'accounts/successpage.html')
     return response
 
+def createProjeto(request):
+    print("createProj")
+    login_data = request.POST.dict()
+    nomeProj= login_data.get("nomeProjeto")
+    descrProj= login_data.get("descricaoProjeto")
+    projConcluido= login_data.get("isConcluido")
+    print(projConcluido)
+    if projConcluido == "on":
+        projConcluido = True
+    else:
+        projConcluido = False
+    print("concluido", projConcluido)
+    projeto = createProj(nomeProj, descrProj, projConcluido)
+    print(projeto)
+    mensagem = "Código do projeto: "+str(projeto)
+    messages.add_message(request, messages.INFO, mensagem)
+    response = render(request, 'accounts/successpageproj.html')
+    return response
+
 def checkCpf(request): #checa o cpf e já adiciona as informacoes nos campos necessarios da proxima pagina
     if request.user.is_authenticated:
         login_data = request.POST.dict()
@@ -127,6 +163,34 @@ def checkCpf(request): #checa o cpf e já adiciona as informacoes nos campos nec
                 'cep' : data.cep
             }
             form = UpdateAssociado(initial=initial_data)
+            context = {
+                'data': data,
+                'form': form
+            }
+            response = render(request, 'accounts/gerenciarapage.html', context)
+            return response
+        else:
+            context = {}
+            context['form'] = CheckCpf()
+            messages.add_message(request, messages.INFO, 'Associado não encontrado!')
+            return render(request, 'accounts/gerenciarassociados_page.html', context)
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
+def checkProject(request): #checa o cpf e já adiciona as informacoes nos campos necessarios da proxima pagina
+    if request.user.is_authenticated:
+        login_data = request.POST.dict()
+        cpf = login_data.get("cpf")
+        check = chk_tabl(cpf)
+        if check == True:
+            data = Projetos.objects.get(cpf=cpf)
+            initial_data = {
+                'nomeProjeto' : data.nomeProjeto,
+                'descricaoProjeto' : data.descricaoProjeto,
+                'isConcluido' : data.projConcluido
+            }
+            form = ProjetosInput(initial=initial_data)
             context = {
                 'data': data,
                 'form': form
@@ -176,6 +240,23 @@ def updateAssociado(request):
     associados.save()
     print("associados")
     response = render(request, 'accounts/successpage.html')
+    return response
+
+def updateProjeto(request):
+    print("createProj")
+    login_data = request.POST.dict()
+    nomeProj= login_data.get("nomeProjeto")
+    descrProj= login_data.get("descricaoProjeto")
+    projConcluido= login_data.get("isConcluido")
+    print(projConcluido)
+    if projConcluido == "on":
+        projConcluido = True
+    elif projConcluido == "off":
+        projConcluido = False
+    print("concluido", projConcluido)
+    projeto = createProj(nomeProj, descrProj, projConcluido)
+    print(projeto)
+    response = render(request, 'accounts/successpageproj.html')
     return response
 
 def logutView(request):

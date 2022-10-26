@@ -125,3 +125,49 @@ nobr{
 .trueorfalse{
     width: 20px;
 }
+
+.filterpanel  {
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    height: 250px;
+    top: 0;
+    left: 0;
+    background-color: #228B22;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 30px;
+}
+.filterpanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+    left: 10;
+}
+.filterpanel a:hover {
+    color: #f1f1f1;
+}
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
+
+.openbtn:hover {
+    background-color:#444;
+}

@@ -18,9 +18,14 @@
         <div class="buttons">
             <a href="{% url 'cadastrar' %}"><button type="button" class="changepagebuttons">Cadastrar Associados</button></a>
             <p></p>
+            <a href="{% url 'cadastrarproj' %}"><button type="button" class="changepagebuttons">Criar Projeto</button></a>
+            <p></p>
             <a href="{% url 'verassociados' %}"><button type="button" class="changepagebuttons">Ver Associados</button></a>
             <p></p>
+            <a href="{% url 'logout' %}"><button type="button" class="changepagebuttons">Ver Projetos</button></a>
+            <p></p>
             <a href="{% url 'logout' %}"><button type="button" class="changepagebuttons">Sair</button></a>
+
         </div>
     </div>
 {% endblock content %}

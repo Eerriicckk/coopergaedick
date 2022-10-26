@@ -40,6 +40,8 @@ urlpatterns = [
     path('gerenciar/', views.gerenciar, name='gerenciar'),
     path('gerenciar/associado/', views.checkCpf, name='checkcpf'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('criarprojeto/', views.cadastrarProjeto, name="cadastrarproj"),
+    path('criadoprojeto/', views.createProjeto, name="criarproj"),
     path('', views.logutView, name = 'logout'),
     path('', views.redirect_view, name='teste'),
     path('', views.principal) 
