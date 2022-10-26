@@ -23,42 +23,34 @@
     <div class="downcenter">    
         <div class="buttons">
             <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
-            <a href="{% url 'gerenciar' %}"><button type="submit" class="changepagebuttons">Gerenciar</button></a>
+            <a href="{% url 'principal' %}"><button type="submit" class="changepagebuttons">Gerenciar</button></a>
         </div>
-        <nobr><strong>Associados</strong></nobr>
+        <nobr><strong>Projetos</strong></nobr>
     </div>
     <br>
    <table class="associados">
         <tr>
             <th>Nome do Projeto</th>
             <th class="primarykey">Código do projeto</th>
-            <th>Concluído</th>
             <th>Data de Criação</th>
-            
+            <th>Concluído</th>
+            <th class="descrprojeto">Descrição do Projeto</th>
         </tr>
         {% for item in objs %}
         <tr>
-            <td>{{ item.nomeAssociado }}</td>
-            <td>{{ item.quotas }}</td>
-            <td>{{ item.nomeRespoAssociado }}</td>
-            <td>{{ item.dt_nasct| date:"d-m-Y" }}</td>
-            <td>{{ item.cidadeNatal }}</td>
-            <td>{{ item.estadoNatal }}</td>
-            <td>{{ item.telefone }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.rg }}</td>
-            <td class="primarykey">{{ item.cpf }}</td>
-            <td>{% if item.isAssociado == False%}
-                <img src="{% static 'images/wrong.png' %}" class="trueorfalse">
-                {% else %}
-                <img src="{% static 'images/right.png' %}" class="trueorfalse">
-                {% endif %}
-            </td>
-            <td>{{ item.cargo }}</td>
-            <td>{{ item.rua }}</td>
-            <td>{{ item.bairro }}</td>
-            <td>{{ item.cidadeAtual }}</td>
-            <td>{{ item.cep }}</td>
+            {% if item.codProjeto == 0%}
+            {% else %}
+                <td>{{ item.nomeProjeto }}</td>
+                <td class="primarykey">{{ item.codProjeto }}</td>
+                <td>{{ item.dtCriacao| date:"d-m-Y" }}</td>
+                <td>{% if item.projConcluido == False%}
+                    <img src="{% static 'images/wrong.png' %}" class="trueorfalse">
+                    {% else %}
+                    <img src="{% static 'images/right.png' %}" class="trueorfalse">
+                    {% endif %}
+                </td>
+                <td>{{ item.descricaoProjeto }}</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>

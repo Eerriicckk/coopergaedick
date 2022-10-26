@@ -29,11 +29,13 @@ td{
     border: 3px solid black;
     border-radius: 10px;
     background-color: forestgreen;
+    padding:5px;
 }
 th{
     border: 3px solid black;
     border-radius: 10px;
     background-color: forestgreen;
+    padding:5px;
 }
 .primarykey{
     border: 3px solid black;
