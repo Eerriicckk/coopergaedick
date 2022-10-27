@@ -159,4 +159,15 @@ def chk_tabl(reques1):
         return votes_table
     votes_table = Associados.objects.filter(cpf=cpf).exists()
     return votes_table
+
+def chkProj(reques1):
+    codProjeto = reques1
+    if Projetos.objects.filter(codProjeto=codProjeto).exists():
+        votes_table = Projetos.objects.filter(codProjeto=codProjeto).exists()
+        print(votes_table)
+        return votes_table
+    else:
+        votes_table = Projetos.objects.filter(codProjeto=codProjeto).exists()
+        print(votes_table)
+        return votes_table
 # Create your models here.

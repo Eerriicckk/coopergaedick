@@ -29,20 +29,19 @@ input{
     font-family:arial;
     font-size:12px;
     text-align:center;
-    width:180px;
+    width:200px;
     background-color:white;
-    border: 3px solid black;
-    border-radius:5px;
-    box-shadow: 0px 10px 5px 2px rgb(0, 130, 0);
+    border-style: none;
+    border-radius:3px;
 }
 .loginboxbutton{
-    border: 3px solid black;
-    border-radius:5px;
+    background-color:rgb(0, 177, 0);
+    border-style: none;
+    border-radius:3px;
 }
 .checkbutton{
     border: 3px solid black;
-    border-radius:5px;
-    box-shadow: 0px 8px 5px 2px rgb(0, 130, 0);
+    border-radius:3px;
 }
 .centeritems{
     text-align:center;
@@ -58,9 +57,9 @@ input{
 
 }
 .changepagebuttons{
-    border: 3px solid black;
-    border-radius:5px;
-    box-shadow: 0px 8px 5px 2px rgb(0, 130, 0);
+    border-style: none;
+    border-radius:3px;
+    background-color:whitesmoke;
 }
 .tablecetec{
     margin-bottom:0%;

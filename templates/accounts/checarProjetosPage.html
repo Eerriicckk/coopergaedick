@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load widget_tweaks%}
+{% load static %}
+
+{% block content %}
+    <div class="down">
+        <table class="tablecetec">
+        <tr>
+            <th><p class="bluetext">Desenvolvido por:</p></th>
+            <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+        </table>
+    </div>
+    
+
+    <div class="logo">
+        <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+        {% if messages %}
+            {% for message in messages %}
+                <div class = "alert alert-{{message.tags}}">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br><br>
+    <div class="centeritems">
+    <div class="loginbox">
+        <strong>Digite o código do projeto:</strong>
+        <br><br>
+        <form method="post" action="{% url 'checkcod' %}">
+            {% csrf_token %}
+            {{ form.codProjeto|add_class:"input"  }}
+            <br><br>
+            <input type="submit" value="Prosseguir" class="loginboxbutton"/>
+            <a href="{% url 'verprojetos' %}"><button type="button" class="loginboxbutton">Voltar</button></a>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+        <br>
+    </div>
+    </div>
+{% endblock content %}

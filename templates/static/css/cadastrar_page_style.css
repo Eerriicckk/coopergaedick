@@ -42,6 +42,7 @@ h3{
     margin-left: auto;
     margin-right: auto;
     align-items: center;
+    position:relative;
 }
 .inputUser{
     width: 174px;
@@ -55,22 +56,19 @@ h3{
     width: 14px;
     height: 14px;
     margin-left: 255px;
-    border-radius:5px;
-    box-shadow: 0px 8px 5px 2px rgb(0, 130, 0);
-    border: 3px solid black;
 }
 .inputBool{
+    background-color: white;
+    border-style: none;
     border-radius:5px;
-    box-shadow: 0px 8px 5px 2px rgb(0, 130, 0);
-    border: 3px solid black;
 }
 .inputAssociado{
     margin: 0px 0px 0px 0px;
 }
 .changepagebuttons{
-    border-radius:5px;
-    box-shadow: 0px 8px 5px 2px rgb(0, 130, 0);
-    border: 3px solid black;
+    background-color: white;
+    border-style: none;
+    border-radius:3px;
 }
 .labelinput{
     color: black;
@@ -102,4 +100,16 @@ h3{
     position:absolute;
     margin-bottom:0%;
     right:0%;
+}
+.confirmationalert{
+    width: 0;
+    z-index: 1;
+    position:absolute;
+    height:100%;
+    top:0%;
+    text-align:center;
+    background-color: rgb(0, 87, 0);
+    overflow-x: hidden;
+    padding:0px;
+    border-radius: 10px;
 }

@@ -1,0 +1,96 @@
+{% load static %}
+{% load widget_tweaks%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/cadastrar_page_style.css' %}" />
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooper Gaedicke</title>
+</head>
+{% block content %}
+    <div class="down">
+      <table class="tablecetec">
+        <tr>
+          <th><p class="bluetext">Desenvolvido por:</p></th>
+          <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="header">
+      <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+    </div>
+    <div class="centeritems">
+      <div class="formulario">
+        <form  method="post" action="{% url 'updateproj' %}">
+          {% csrf_token %}
+          <h2><strong>Gerenciamento do projeto</strong></h2>
+          <hr>
+          <br>
+          <div class="inputBox">
+            <label for="nome" class="labelinput">Nome Do Projeto:</label>
+            <div>{{ form.nomeProjeto|add_class:"inputBool" }}</div>
+          </div><!--nome-->
+          <br>
+          <div class="inputBox">
+            <label for="cargo" class="labelinput">Descrição:</label>
+            <div>{{ form.descricaoProjeto|add_class:"inputBool" }}</div>
+          </div><!--Cargo-->
+          <br>
+          <div class="inputBox">
+            <label for="associado" class="labelinput">Concluido:</label>
+            <div class="inputUserBool">{{ form.isConcluido|add_class:"inputAssociado" }}</div>
+          </div>
+          <br>
+          <div class="inputBox">
+            <label for="nomeresponsavel" class="labelinput">Código do projeto:</label>
+            <div>{{ form.codProjeto|add_class:"inputBool" }}</div>
+          </div><!--nome responsaveis-->
+          <br>
+          <div class="inputBox">
+            <label for="datadenascimento" class="labelinput">Data de Criação:</label>
+            <div>{{ form.dtCriacao|add_class:"inputBool" }}</div>
+          </div><!--data nascimento-->
+          <br>
+          <hr>
+          <div class="downcenter">    
+            <div class="buttons">
+              <input type="submit" value="Salvar" class="changepagebuttons"/>
+              <input type="hidden" name="next" value="{{ next}}" />
+              <a href="{% url 'principal' %}"><button type="button" class="changepagebuttons">Voltar</button></a>
+            </div>
+          </div>
+          
+        </form>
+        <a href="javascript:void(0)" onclick="confirmDelete()"><button class="changepagebuttons">Deletar projeto</button></a>
+        <hr>
+        <div  id="confirmationalert" class="confirmationalert">
+          <div style="position:relative; height:90%">
+            <h1>Realmente quer deletar o projeto?</h1>
+            <form method="post" action="{% url 'deletarproj' %}" style="height:25%; width:50%; position:absolute; left:0%" class="deleteform">
+              {% csrf_token %}
+              {{ form.hiddenCodProjeto}}
+              <input type="submit" value="Sim" class="changepagebuttons" style="height:100%; width:100%; position:absolute; background-color:red;
+              border-radius:10px; font-size:32px;"/>
+            </form>
+            <br><br><br>
+            <a href="javascript:void(0)" onclick="notDeleted()"><button class="changepagebuttons" style="border-radius:10px;font-size:32px;height:25%; width:50%; position:absolute; left:25%; bottom:25%; background-color:green"><strong>Não</strong></button></a>
+          </div>
+          <script>
+          function confirmDelete(){
+            document.getElementById("confirmationalert").style.width="100%";
+          }
+          function notDeleted(){
+            document.getElementById("confirmationalert").style.width="0px";
+          }
+        </script>
+        </div>
+        
+      </div>
+    </div>
+    <br>
+{% endblock content %}
+</html>

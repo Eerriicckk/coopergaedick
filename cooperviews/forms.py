@@ -9,6 +9,9 @@ class ProjetosInput(forms.Form):
     nomeProjeto = forms.CharField(max_length=140)
     descricaoProjeto = forms.CharField(max_length=500, widget=Textarea)
     isConcluido = forms.BooleanField(required=False)
+    dtCriacao = forms.DateField(widget=DateInput(attrs={'readonly':'readonly'}))
+    codProjeto = forms.IntegerField(widget=NumberInput(attrs={'readonly':'readonly', 'pattern': '[0-9]{10}', 'type': 'text'}))
+    hiddenCodProjeto = forms.IntegerField(widget=NumberInput(attrs={'type':'hidden'}))
 
 class CreateAssociado(forms.Form):
     cpf = forms.IntegerField(max_value=99999999999, widget=NumberInput(attrs={'placeholder': 'Ex: 20711247072', 'pattern': '[0-9]{11}', 'type': 'text'}))
@@ -47,7 +50,12 @@ class UpdateAssociado(forms.Form):
     cep = forms.IntegerField(max_value=99999999, widget=NumberInput(attrs={'placeholder': 'Ex: 69079050', 'pattern': '[0-9]{8}', 'type': 'text'}))
 
 class CheckCpf(forms.Form):
-    cpf = forms.CharField()
+    cpf = forms.IntegerField(max_value=99999999999, widget=NumberInput(attrs={'pattern': '[0-9]{11}', 'type': 'text'}))
+    
+
+class CheckCodigo(forms.Form):
+    codProjeto = forms.IntegerField(max_value=99999999999, widget=NumberInput(attrs={'pattern': '[0-9]{10}', 'type': 'text'}))
+    
 
 class FilterOptions(forms.Form):
     nome = forms.BooleanField(required=False)

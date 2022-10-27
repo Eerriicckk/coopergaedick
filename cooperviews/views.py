@@ -3,9 +3,9 @@ from django.shortcuts import render
 from django.contrib.auth import logout
 from django.contrib import messages
 from django_tables2 import SingleTableView
-from cooperviews.models import chk_table, chk_tabl, createAssociado, createProj, Associados, Projetos
+from cooperviews.models import chk_table, chk_tabl, chkProj, createAssociado, createProj, Associados, Projetos
 from .tables import PersonTable
-from .forms import CreateAssociado, CheckCpf, UpdateAssociado, ProjetosInput
+from .forms import CreateAssociado, CheckCpf, UpdateAssociado, ProjetosInput, CheckCodigo
 from .models import Associados
 
 class PersonListView(SingleTableView):
@@ -54,11 +54,20 @@ def cadastrarProjeto(request):
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
 
-def gerenciar(request):
+def gerenciarAssociado(request):
     if request.user.is_authenticated:
         context = {}
         context['form'] = CheckCpf()
         return render(request, 'accounts/gerenciarassociados_page.html', context)
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
+def gerenciarProjeto(request):
+    if request.user.is_authenticated:
+        context = {}
+        context['form'] = CheckCodigo()
+        return render(request, 'accounts/checarProjetosPage.html', context)
     else:
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
@@ -178,30 +187,33 @@ def checkCpf(request): #checa o cpf e já adiciona as informacoes nos campos nec
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
 
-def checkProject(request): #checa o cpf e já adiciona as informacoes nos campos necessarios da proxima pagina
+def checkProject(request): #checa o codigo do projeto e já adiciona as informacoes nos campos necessarios da proxima pagina
     if request.user.is_authenticated:
         login_data = request.POST.dict()
-        cpf = login_data.get("cpf")
-        check = chk_tabl(cpf)
+        cpf = login_data.get("codProjeto")
+        check = chkProj(cpf)
         if check == True:
-            data = Projetos.objects.get(cpf=cpf)
+            data = Projetos.objects.get(codProjeto=cpf)
             initial_data = {
                 'nomeProjeto' : data.nomeProjeto,
                 'descricaoProjeto' : data.descricaoProjeto,
-                'isConcluido' : data.projConcluido
+                'isConcluido' : data.projConcluido,
+                'codProjeto' : data.codProjeto,
+                'dtCriacao' : data.dtCriacao,
+                'hiddenCodProjeto' : data.codProjeto
             }
             form = ProjetosInput(initial=initial_data)
             context = {
                 'data': data,
                 'form': form
             }
-            response = render(request, 'accounts/gerenciarapage.html', context)
+            response = render(request, 'accounts/gerenciarProjetosPage.html', context)
             return response
         else:
             context = {}
-            context['form'] = CheckCpf()
-            messages.add_message(request, messages.INFO, 'Associado não encontrado!')
-            return render(request, 'accounts/gerenciarassociados_page.html', context)
+            context['form'] = CheckCodigo()
+            messages.add_message(request, messages.INFO, 'Código incorreto')
+            return render(request, 'accounts/checarProjetosPage.html', context)
     else:
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
@@ -243,22 +255,33 @@ def updateAssociado(request):
     return response
 
 def updateProjeto(request):
-    print("createProj")
+    print("createProjet")
     login_data = request.POST.dict()
     nomeProj= login_data.get("nomeProjeto")
     descrProj= login_data.get("descricaoProjeto")
     projConcluido= login_data.get("isConcluido")
+    codProjeto = login_data.get("codProjeto")
+    dtCriacao = login_data.get("dtCriacao")
     print(projConcluido)
     if projConcluido == "on":
         projConcluido = True
-    elif projConcluido == "off":
+    else:
         projConcluido = False
     print("concluido", projConcluido)
-    projeto = createProj(nomeProj, descrProj, projConcluido)
-    print(projeto)
+    projeto = Projetos(codProjeto=codProjeto, dtCriacao=dtCriacao, nomeProjeto=nomeProj, descricaoProjeto=descrProj, projConcluido=projConcluido)
+    projeto.save()
     response = render(request, 'accounts/successpageproj.html')
     return response
 
 def logutView(request):
     logout(request)
+
+def deleteProj(request):
+    login_data = request.POST.dict()
+    codProjeto = login_data.get("hiddenCodProjeto")
+    print(codProjeto)
+    projeto = Projetos.objects.get(codProjeto=codProjeto)
+    projeto.delete()
+    response = render(request, 'accounts/principalpage.html')
+    return response
 # Create your views here.

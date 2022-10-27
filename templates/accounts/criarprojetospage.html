@@ -27,7 +27,23 @@
       <div class="formulario">
           <form  method="post" action="{% url 'criarproj' %}">
             {% csrf_token %}
-            {{ form }}
+            <br>
+            <div class="inputBox">
+              <label for="nome" class="labelinput">Nome do Projeto:</label>
+              <div>{{ form.nomeProjeto|add_class:"inputBool" }}</div>
+            </div><!--nome-->
+            <br><br>
+            <div class="inputBox">
+              <label for="nome" class="labelinput">Descrição do Projeto:</label>
+              <div>{{ form.descricaoProjeto|add_class:"inputBool" }}</div>
+            </div><!--nome-->
+            <br><br>
+            <br>
+            <div class="inputBox">
+              <label for="associado" class="labelinput">Está Concluido:</label>
+              <div class="inputUserBool">{{ form.isConcluido|add_class:"inputAssociado" }}</div>
+            </div><!--associado-->
+            <br>
             <div class="downcenter">    
               <div class="buttons">
                 <input type="submit" value="Salvar" class="changepagebuttons"/>
