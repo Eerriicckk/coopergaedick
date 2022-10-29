@@ -30,22 +30,70 @@
     <br><br><br>
    <table class="associados">
         <tr>
-            <th>Nome</th>
-            <th>Quotas</th>
-            <th>Nome Responsáveis</th>
-            <th>Data de Nascimento</th>
-            <th>Cidade Natal</th>
-            <th>Estado Natal</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>Rg</th>
-            <th class="primarykey">Cpf</th>
-            <th>Está Associado</th>
-            <th>Cargo</th>
-            <th>Rua</th>
-            <th>Bairro</th>
-            <th>Cidade Atual</th>
-            <th>Cep</th>
+            <th>Nome<br>
+                <a href="{% url 'verassociadossorted' sort='nomeAssociado' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-nomeAssociado' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Quotas<br>
+                <a href="{% url 'verassociadossorted' sort='quotas' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-quotas' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Nome Responsáveis<br>
+                <a href="{% url 'verassociadossorted' sort='nomeRespoAssociado' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-nomeRespoAssociado' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Data de Nascimento<br>
+                <a href="{% url 'verassociadossorted' sort='dt_nasct' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-dt_nasct' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Cidade Natal<br>
+                <a href="{% url 'verassociadossorted' sort='cidadeNatal' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-cidadeNatal' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Estado Natal<br>
+                <a href="{% url 'verassociadossorted' sort='estadoNatal' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-estadoNatal' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Telefone<br>
+                <a href="{% url 'verassociadossorted' sort='telefone' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-telefone' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Email<br>
+                <a href="{% url 'verassociadossorted' sort='email' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-email' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Rg<br>
+                <a href="{% url 'verassociadossorted' sort='rg' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-rg' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th class="primarykey">Cpf<br>
+                <a href="{% url 'verassociadossorted' sort='cpf' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-cpf' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Está Associado<br>
+                <a href="{% url 'verassociadossorted' sort='isAssociado' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-isAssociado' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Cargo<br>
+                <a href="{% url 'verassociadossorted' sort='cargo' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-cargo' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Rua<br>
+                <a href="{% url 'verassociadossorted' sort='rua' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-rua' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Bairro<br>
+                <a href="{% url 'verassociadossorted' sort='bairro' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-bairro' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Cidade Atual<br>
+                <a href="{% url 'verassociadossorted' sort='cidadeAtual' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-cidadeAtual' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Cep<br>
+                <a href="{% url 'verassociadossorted' sort='cep' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verassociadossorted' sort='-cep' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
         </tr>
         {% for item in objs %}
         <tr>

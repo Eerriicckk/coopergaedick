@@ -21,9 +21,25 @@ def view_info(request):
         messages.add_message(request, messages.INFO, 'Você não está logado')
         return render(request, 'accounts/notloggedwarning.html')
 
+def sortViewAssociados(request, sort):
+    if request.user.is_authenticated:
+        objs=Associados.objects.all().order_by(sort)
+        return render(request, 'accounts/ver_associados_page.html', {'objs':objs})
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
 def viewProjects(request):
     if request.user.is_authenticated:
-        objs=Projetos.objects.all()
+        objs=Projetos.objects.all().order_by('-projConcluido')
+        return render(request, 'accounts/verProjetosPage.html', {'objs':objs})
+    else:
+        messages.add_message(request, messages.INFO, 'Você não está logado')
+        return render(request, 'accounts/notloggedwarning.html')
+
+def sortViewProjects(request, sort):
+    if request.user.is_authenticated:
+        objs=Projetos.objects.all().order_by(sort)
         return render(request, 'accounts/verProjetosPage.html', {'objs':objs})
     else:
         messages.add_message(request, messages.INFO, 'Você não está logado')

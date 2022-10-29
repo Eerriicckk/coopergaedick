@@ -30,11 +30,26 @@
     <br><br><br>
    <table class="associados">
         <tr>
-            <th>Nome do Projeto</th>
-            <th class="primarykey">Código do projeto</th>
-            <th>Data de Criação</th>
-            <th>Concluído</th>
-            <th class="descrprojeto">Descrição do Projeto</th>
+            <th>Nome do Projeto<br>
+                <a href="{% url 'verprojetossorted' sort='nomeProjeto' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verprojetossorted' sort='-nomeProjeto' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th class="primarykey">Código do projeto<br>
+                <a href="{% url 'verprojetossorted' sort='codProjeto' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verprojetossorted' sort='-codProjeto' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Data de Criação<br>
+                <a href="{% url 'verprojetossorted' sort='dtCriacao' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verprojetossorted' sort='-dtCriacao' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th>Concluído<br>
+                <a href="{% url 'verprojetossorted' sort='projConcluido' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verprojetossorted' sort='-projConcluido' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
+            <th class="descrprojeto">Descrição do Projeto<br>
+                <a href="{% url 'verprojetossorted' sort='descricaoProjeto' %}"><img src="{% static 'images/pra-cima.png'%}" style="width:12px;"></a>
+                <a href="{% url 'verprojetossorted' sort='-descricaoProjeto' %}"><img src="{% static 'images/abaixo.png'%}" style="width:12px;"></a>
+            </th>
         </tr>
         {% for item in objs %}
         <tr>
