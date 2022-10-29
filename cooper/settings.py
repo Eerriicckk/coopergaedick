@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'web-production-1d8d.up.railway.app',
+    'coopergaedicke.herokuapp.com',
     'coopergaedicke.herokuapp.com'
 ]
 
