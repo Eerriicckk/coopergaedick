@@ -46,8 +46,6 @@ INSTALLED_APPS = [
     'templates',
     'cooperviews',
     'widget_tweaks',
-    'django_tables2',
-    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -86,12 +84,12 @@ WSGI_APPLICATION = 'cooper.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'cooperdatabase.sqlite3',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cooperdatabase',
+        'USER': 'cooper',
+        'PASSWORD': 'D@tabas3AdmiN',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 

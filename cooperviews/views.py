@@ -2,16 +2,9 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.contrib.auth import logout
 from django.contrib import messages
-from django_tables2 import SingleTableView
 from cooperviews.models import chk_table, chk_tabl, chkProj, createAssociado, createProj, Associados, Projetos
-from .tables import PersonTable
 from .forms import CreateAssociado, CheckCpf, UpdateAssociado, ProjetosInput, CheckCodigo
 from .models import Associados
-
-class PersonListView(SingleTableView):
-    model = Associados
-    tables_class = PersonTable
-    template_name = 'accounts/ver_associados_page.html'
 
 def view_info(request):
     if request.user.is_authenticated:
