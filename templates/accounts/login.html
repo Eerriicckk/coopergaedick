@@ -1,0 +1,223 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Site da Cooper</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/carousel.css'%}" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="height:47px;">
+        <div class="container-fluid" style="background-color:forestgreen;">
+          <a class="navbar-brand" style="color:black"href="">Coopergaedicke</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" style="background-color:darkgreen;">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active batata">
+            <img class="bd-placeholder" width="18%" height="auto" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" src="{% static 'images/cooper.png'%}"></img>
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h1>Cooper Gaedicke</h1>
+                <p>A cooperativa foi fundada no dia 02/12/2014 com 14 sócios fundadores. Desde a fundação já passaram em torno de 100 associados. Este ano estamos com 12 associados ativos. A nossa professora orientadora este ano é Dóris Cristiane Blauth.</p>
+                <!--<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p> -->
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item batata">
+            <img class="bd-placeholder-img" width="50%" height="63%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"  src="{% static 'images/inicio.png'%}"><rect width="100%" height="100%" fill="#777"/></img>
+    
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Produção</h1>
+                <p>A Coopergaedicke atualmente não está com o produto definitivo. Ainda estamos pesquisando e experimentando materiais.</p>
+                <!--<p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>-->
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item batata">
+            <img class="bd-placeholder-img" width="60%" height="63%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice"  src="{% static 'images/terceira.png'%}"><rect width="100%" height="100%" fill="#777"/></img>
+    
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Reuniões</h1>
+                <p>Os encontros da cooperativa acontecem semanalmente nas quintas-feiras das 13h até 15h com intuito de ajudar a escola no que está sendo necessário e confeccionar nossos produtos. As reuniões passam a ocorrer uma vez por mês com o objetivo de discutir fatos ocorridos.</p>
+                <!--<p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+    
+      <!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+      <div class="container marketing">
+    
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" src="{% static 'images/pneu.png'%}"></img>
+    
+            <h2 class="fw-normal">Pintura de pneus</h2>
+            <!--<p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>-->
+            <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" src="{% static 'images/mandala.png'%}"></img>
+    
+            <h2 class="fw-normal">Mandalas e chaveiros</h2>
+            <p>As mandalas e os chaveiros são feitas com um material de plástico, impressos em uma gráfica, os desenhos foram todos feitos pelos associados da cooperativa. E depois decoradas pela cooperativa.</p>
+            <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" src="{% static 'images/sache.png'%}"></img>
+    
+            <h2 class="fw-normal">Saches</h2>
+            <p>São feitos com sagu e essência de rosas e enfeitados com tule e fitas decorativas.</p>
+            <!--<p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    
+    
+        <!-- START THE FEATURETTES -->
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Nova direção de 2022 <!--<span class="text-muted">It’ll blow your mind.</span></h2>-->
+            <p class="lead">Nova diretoria empossada no dia 02/06/2022.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" src="{% static 'images/direcao.png'%}" focusable="false"></img>
+    
+          </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Local de produção <!--<span class="text-muted">See for yourself.</span></h2>-->
+            <p class="lead">O local de produção da Cooperativa é na sala de Artes da escola. A cooperativa possui um armário que foi emprestado pela escola e é utilizado para guardar os materiais para a confecção dos nossos objetos de aprendizagem e o estoque.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="700" xmlns="http://www.w3.org/2000/svg" role="img" src="{% static 'images/local.png' %}" focusable="false"></img>
+    
+          </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Festival <!--<span class="text-muted">Checkmate.</span></h2>-->
+            <p class="lead">Este ano fizemos galinhas com bloquinhos para vender no DIA C, no Festival Sabores da Colônia.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" src="{% static 'images/festival.png' %}" focusable="false"></img>
+    
+          </div>
+        </div>
+    
+        <hr class="featurette-divider">
+    
+        <!-- /END THE FEATURETTES -->
+    
+      </div><!-- /.container -->
+    
+    
+      <!-- FOOTER -->
+      <footer class="container">
+        <!--<p class="float-end"><a href="#">Back to top</a></p>-->
+        <p>Coopergaedicke 2022. Desenvolvido por: <img src="{% static 'images/CETEC-Logo-Horizontal.png'%}" alt="Logo Cetec" class="ceteclogo"><!--<a href="#">Privacy</a> &middot; <a href="#">Terms</a>--></p>
+      </footer>
+    </main>
+    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

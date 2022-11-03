@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="down">
+      <table class="tablecetec">
+        <tr>
+          <th><p class="bluetext">Desenvolvido por:</p></th>
+          <th><img src="{% static 'images/CETEC-Logo-Horizontal.png' %}" alt="logo cetec" class="ceteclogo"></th>
+        </tr>
+      </table>
+    </div>
+    <div class="logo">
+        <img src="{% static 'images/cooper.png' %}" alt="coopergaedicke logo" class="cooperLogo">
+      {% if messages %}
+        {% for message in messages %}
+          {% if forloop.counter < 2 %}
+            <div class = "alerta">{{message}}</div>
+          {% endif%}
+        {% endfor %}
+      {% endif %} 
+      {% if form.errors %}
+        <h3>Conta ou senha incorretos, tente novamente.</h3>
+      {% endif %}
+    </div>
+    <br><br>
+    <div class="centeritems" >
+  
+    <div class="loginbox">
+      <form method="post" action="{% url 'login' %}" class="teste">
+        {% csrf_token %}
+          <strong>Usuário</strong>
+          <br><br>
+          {{ form.username}}
+          <strong>Senha</strong>
+          <br><br>
+          {{ form.password }}
+        <br>
+        <br>
+        <input type="submit" value="login" class="loginboxbutton"/>
+        <br>
+        <input type="hidden" name="next" value="{{ next }}" />
+        <br>  
+      </form>
+    </div>
+    </div>
+    
+    
+{% endblock content %}
